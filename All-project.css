@@ -1,0 +1,769 @@
+/* ====== 全体のベーススタイル ====== */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+
+.log-section {
+  margin-top: auto;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  z-index: 1000;
+}
+
+#homeIcon {
+  width: 85px;
+  cursor: pointer;
+}
+
+/* 見出しのスタイル */
+h1, h2, h3 {
+    text-align: center;
+    color: #2c3e50; /* 落ち着いた濃い青 */
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    font-size: 2.5em;
+    font-family: 'Robot', sans-serif;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    opacity:0;
+    transform: translateY(20px);
+    animation: fadeIn 2.5s ease-out forwards;
+}
+
+
+/* ====== コンテナスタイル ====== */
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white; /* 白背景 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* ====== ボタンのスタイル ====== */
+.button-container {
+    position: relative;
+    display: flex;
+    justify-content: center;   /* ← 中央揃え：横方向 */
+    align-items: center;       /* ← 中央揃え：縦方向（※高さがある親が必要） */
+    width: 100%;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+
+.button {
+    display: inline-flex; /* インライン要素で中央揃え */
+    justify-content: center; /* 水平方向の中央揃え */
+    align-items: center; /* 垂直方向の中央揃え */
+    width: 200px; /* 幅を固定 */
+    height: auto; /* 高さは内容に応じて自動調整 */
+    margin: 20px; /* 周囲の余白 */
+    padding: 10px 15px; /* 内側の余白 */
+    font-size: 25px; /* フォントサイズ */
+    color: #fff; /* 文字色 */
+    border: none; /* 枠線なし */
+    border-radius: 5px; /* 角を丸く */
+    text-decoration: none; /* 下線なし */
+    cursor: pointer; /* カーソル変更 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 軽い影を追加 */
+    box-sizing: border-box; /* パディングを含めたサイズ計算 */
+    transition: box-shadow 0.3s ease, transform 0.2s ease, background-color 0.3s ease;
+}
+
+
+
+.level-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
+}
+
+.example-snippet {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #444;
+  text-align: center;
+}
+
+
+
+/* 言語ボタンのスタイル */
+.language-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.language-button {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f8f9fa;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 10px 15px;
+    width: 160px;
+    height: 70px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin: 20px;
+}
+
+.language-button img {
+    width: 24px;
+    height: 16px;
+}
+
+.language-button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+/*変更中*/
+.language-button.selected,
+.level-button.selected {
+    border: 2px solid #2196F3;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* 影を強調して“浮き出し”感 */
+    transition: scale(1.05);
+}
+
+
+/*レベル選択 コース選択ボタン*/
+.course-button,
+.level-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  margin: 20px;
+  padding: 10px 15px;
+  font-size: 25px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+
+/* コース選択とレベル選択は一緒の見た目 */
+.course-button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.course-button.navigation {
+    background-color: #58d68d; /* 道案内コース：緑系 */
+}
+
+.course-button.pronunciation {
+    background-color: #2196F3; /* 発音コース：青系 */
+}
+
+.course-button.verbsAdverbs {
+    background-color: #FFC107; /* 動作と表現コース：黄色系 */
+}
+
+.course-button.selected {
+    border: 2px solid #5dade2;
+    transform: scale(1.05); /* 少し上に持ち上げたように見せる */
+}
+
+
+/* 「次へ」ボタンのスタイル */
+
+/* 次へボタン */
+.next-button {
+    background-color: #7deda0;
+    position: absolute;
+    right: 20px;
+    top: 70%;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+  .next-button:hover {
+    background-color: #a9f5c9;
+    opacity: 0.9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  .next-button.active {
+    opacity: 1;
+  }
+  
+  /* 🔵 スタートボタン */
+  .start-button {
+    background-color: #3498db;
+  }
+  .start-button:hover {
+    background-color: #85c1e9;
+    transform: scale(1.05);
+    opacity: 0.9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* 🔙 戻るボタン */
+  .back-button {
+    background-color: #2196F3;
+    position: absolute;
+    left: 20px;
+    top: 65%;
+    transform: translateY(-50%);
+    z-index: 10;
+    font-size: 16px;
+    padding: 6px 12px;
+    width: auto;
+    height: auto;
+    border-radius: 4px;
+  }
+  .back-button:hover {
+    background-color: #1976D2;
+    opacity: 0.9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+
+/* 戻る、次への位置* 改善必要あり
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between; /* ← 左右に離す 
+    align-items: center;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  */
+
+
+.level-button.easy {
+    background-color: #58d68d;
+}
+
+.level-button.normal {
+    background-color: #2196F3;
+}
+
+.level-button.hard {
+    background-color: #FFC107;
+}
+
+.level-button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+/* ====== 吹き出しのスタイル ====== */
+.balloon {
+    position: absolute;
+    display: inline-block;
+    padding: 20px 25px;
+    min-width: 300px;
+    max-width: 500px;
+    background: #e0edff;
+    color: #555;
+    font-size: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    white-space: normal;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.balloon p {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    white-space: pre-wrap;
+}
+
+/* ====== グリッドのスタイル ====== */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  /*background-color: #edf5ff;   💡← ここが“壁”になる！ */
+  border-radius: 18px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03); /* ほぼ見えない軽い枠 */
+}
+
+
+
+.grid-container .card {
+   background: #ffffff; 
+    border-radius: 14px;
+    padding: 14px 16px;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+
+    /* 💙 カード自体に浮かせる青い光 */
+    box-shadow:
+    0 4px 14px rgba(173, 216, 250, 0.65), /* ← #e0edff を透明に */
+    0 2px 4px rgba(0, 0, 0, 0.06);       /* わずかな深み */
+
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+
+.grid-container .card.active {
+    background: #ffdd57;
+    color: #000;
+    transform: scale(1.1);
+    font-weight: bold;
+}
+
+/* ====== コンフィデンスメーター ====== */
+.confidence-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  display: none; /* 最初は非表示 */
+}
+
+.confidence-container {
+  width: 90px;
+  height: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.confidence-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #f8c291, #b8e994);
+  transition: width 0.4s ease;
+}
+
+.confidence-percent {
+  font-size: 14px;
+  font-weight: bold;
+  color: #2c3e50;
+  text-align: right;
+  white-space: nowrap;
+}
+
+
+.confidence-meter {
+    width: 90%;
+    height: 24px;
+    margin: 20px auto;
+    background-color: #e0e0e0;
+    border-radius: 12px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+}
+
+.confidence-bar {
+    height: 100%;
+    width: 0%;
+background: linear-gradient(to right, #f39c12, #2ecc71);
+
+    border-radius: 12px 0 0 12px;
+    transition: width 0.5s ease-in-out;
+}
+
+.confidence-container {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  height: 24px;
+  background-color: #e0e0e0;
+  border-radius: 12px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+
+/* 数値を表示したいならこれも追加 */
+.confidence-meter::after {
+    content: attr(data-percent) '%';
+    position: absolute;
+    right: 10px;
+    top: 2px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    display: block;
+    pointer-events: none;
+}
+
+#waveCanvasContainer {
+  position: fixed;
+  bottom: 20px; /* 画面下部（必要に応じてtopに変更） */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;    /* 👈 コンパクトな横幅 */
+  height: 40px;    /* 👈 高さも控えめ */
+  opacity: 0.3;    /* 👈 うっすら */
+  z-index: 10;     /* 他のUIの邪魔をしない範囲で前面に */
+  pointer-events: none; /* タップやクリックを無視する */
+}
+
+
+/* canvasを親divと同じ大きさにする */
+#waveCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background-color: transparent; /* 背景は親で処理 */
+  }
+
+
+
+/* ====== Step4の発音練習CSS ====== */
+.step-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2C3E50;
+  margin-bottom: 0.5rem;
+}
+.step-subtext {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+.practice-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.practice-input {
+  width: 320px;
+  font-size: 1.2rem;
+  padding: 0.6rem 1rem;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  transition: border 0.3s;
+}
+.practice-input:focus {
+  border-color: #4DA6FF;
+}
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+}
+.btn {
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+.speak-btn {
+  background-color: #5CD69A;
+}
+.check-btn {
+  background-color: #4DA6FF;
+}
+
+.speak-btn:hover,
+.check-btn:hover {
+  transform: scale(1.01);
+  opacity: 0.9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.custom-select {
+  width: 220px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.custom-select .options div:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.01);
+  opacity: 0.9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+
+.custom-select .selected,
+.custom-select .options div {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.custom-select .options {
+  border-top: 1px solid #ccc;
+  background: #fff;
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 0 0 8px 8px;
+}
+.custom-select .options div:hover {
+  background-color: #f0f0f0;
+}
+.feedback-box {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.2rem;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  text-align: center;
+  width: fit-content;
+  max-width: 90%;
+  display: none;
+}
+.feedback-success {
+  background-color: #e6f9ed;
+  border: 2px solid #5CD69A;
+  color: #2c7a4b;
+}
+.feedback-error {
+  background-color: #ffeaea;
+  border: 2px solid #ff7b7b;
+  color: #c0392b;
+}
+
+
+/* ====== Step5のNavigation Button CSS ====== */
+.nav-button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 7rem;
+}
+
+.navcheck-btn {
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+.navcheck-btn {
+  background-color: #4DA6FF;
+}
+
+.navcheck-btn:hover {
+  transform: scale(1.01);
+  opacity: 0.9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.stop-btn {
+  background-color: #e74c3c;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.stop-btn:hover {
+  transform: scale(1.01);
+  opacity: 0.9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+/* ====== ログセクション（コンパクト改良） ====== */
+.log-section {
+    background-color: #fdfdfd; /* 少しだけ明るめに変更 */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 12px; /* paddingを少し縮める */
+    font-size: 13px;     /* フォントを少し小さく */
+    line-height: 1.4;    /* 行間も詰めて */
+    color: #333;
+    height: 100px;       /* 高さをさらに低めに */
+    max-width: 640px;       /* ログ全体の幅も制限 */
+  margin: 0 auto;         /* 中央寄せ */
+  /* 既存のスタイルはそのままでOK */
+    overflow-y: auto;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* 控えめな影に */
+}
+
+.log-section::-webkit-scrollbar {
+    width: 8px;
+}
+
+.log-section::-webkit-scrollbar-thumb {
+    background-color: #3498db;
+    border-radius: 4px;
+}
+
+.log-section::-webkit-scrollbar-track {
+    background: #e0e0e0;
+}
+
+/* ====== コマンドセクションの見出し ====== */
+.command-section h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* ====== フェードインアニメーション ====== */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ====== 言語ボタンのスタイル ====== */
+.language-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* ====== 📋 ログテーブルのスタイル（コンパクト改良） ====== */
+.log-table {
+  margin-top: 120px;
+  width: 100%;
+  min-width: 400px;       /* 狭くなりすぎないように */
+  border-collapse: collapse;
+  font-size: 16px;
+  table-layout: fixed;    /* 幅の安定化：これが効く */
+}
+
+
+.log-table th,
+.log-table td {
+  border: 1px solid #bbb;     /* ← #ccc よりちょっと濃くするだけで視認性UP */
+  padding: 4px 6px;
+  text-align: left;
+  word-break: break-word;
+}
+
+
+.log-table th {
+  background-color: #f7f7f7;
+  color: #555;            /* 少し落ち着いたトーンに */
+  font-weight: 600;
+  text-align: center;
+  vertical-align: middle;
+  height: 32px;
+}
+
+
+.expression-card {
+    background-color: #ffffff;
+    border: 2px solid #dcdcdc;
+    border-radius: 16px;
+    padding: 12px 20px;
+    margin: 10px auto;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+    font-size: 16px;
+}
+
+.expression-en {
+    font-weight: bold;
+    font-size: 20px;
+    color: #2c3e50;
+}
+
+.expression-jp {
+    font-size: 16px;
+    color: #555;
+    margin-top: 4px;
+}
+
+
+.example-snippet {
+    font-size: 0.9em;
+    color: #444;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    padding-left: 5px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.snippet-label {
+    font-weight: bold;
+    color: #007acc;
+}
+
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #555;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 0.8s linear infinite;
+    margin: 15px auto;
+}
+
+/* ロード中のマーク*/
+.loader {
+  border: 4px solid #e0f7e9;
+  border-top: 4px solid #81C784;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
